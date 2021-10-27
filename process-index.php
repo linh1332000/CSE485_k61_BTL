@@ -1,4 +1,4 @@
-<?php include('./config/connect.php'); ?>
+<?php include('config/connect.php'); ?>
 <?php
         // Dịch vụ bảo vệ:
         session_start(); //Công ty dịch vụ Bảo vệ
@@ -6,6 +6,7 @@
         if(isset($_POST['sbmGuiDi'])){
             $username = $_POST['txtEmail'];
             $password = $_POST['txtPass'];
+           
 
 
             // Bước 02: Truy vấn thông tin
@@ -16,21 +17,28 @@
             if(mysqli_num_rows($result) > 0){
                 // Bảo vệ cửa CHÍNH: kiểm tra xác thực
                 $row=mysqli_fetch_array($result);
+                $id_user=$row['id_user'];
                 if ($row['user_lv']==1){
-                    $_SESSION['user_id']=$row['user_id'];
+                    $_SESSION['id_user']=$row['id_user'];
+                 
+                   
                     ?>
                     <script>
                         window.alert('Login Success, Welcome Admin!');
-                        window.location.href='admin/';
+                        window.location.href='admin/index.php?id_user=<?php echo $id_user; ?>';
                     </script>
+                    
                     <?php
+
                 }
                 else{
-                    $_SESSION['user_id']=$row['user_id'];
+                    $_SESSION['id_user']=$row['id_user'];
+                   
+                   
                     ?>
                     <script>
                         window.alert('Login Success, Welcome User!');
-                        window.location.href='user/';
+                        window.location.href='user/index.php?id_user=<?php echo $id_user; ?>';
                     </script>
                     <?php
                 }
