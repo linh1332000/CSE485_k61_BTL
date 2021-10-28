@@ -134,6 +134,6 @@
 			</div>
 		</div>
 	</div>
-    <?php require 'process-index.php';?> 
+
 </body>
 </html>
