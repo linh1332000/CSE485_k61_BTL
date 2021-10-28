@@ -18,31 +18,18 @@
                 // Bảo vệ cửa CHÍNH: kiểm tra xác thực
                 $row=mysqli_fetch_array($result);
                 $id_user=$row['id_user'];
-                if ($row['user_lv']==1){
+                if ($row['user_lv']==1 or $row['user_lv']==0 ){
                     $_SESSION['id_user']=$row['id_user'];
                  
-                   
-                    ?>
-                    <script>
-                        window.alert('Login Success, Welcome Admin!');
-                        window.location.href='admin/index.php?id_user=<?php echo $id_user; ?>';
-                    </script>
-                    
-                    <?php
-
-                }
-                else{
-                    $_SESSION['id_user']=$row['id_user'];
-                   
-                   
                     ?>
                     <script>
                         window.alert('Login Success, Welcome User!');
                         window.location.href='user/index.php?id_user=<?php echo $id_user; ?>';
                     </script>
+                    
                     <?php
-                }
-              
+
+                }     
             }
             else{
                 header("Location: index.php");
