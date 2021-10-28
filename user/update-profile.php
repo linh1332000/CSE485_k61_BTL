@@ -31,6 +31,7 @@
                 $id_lop = $row['id_lop'];
                 $user_pass = $row['user_pass'];
                 $user_sdt = $row['user_sdt'];
+<<<<<<< HEAD
             } else {
 
                 // header('location:' . SITEURL . 'src/manage-drug.php');
@@ -39,6 +40,17 @@
                     window.location.href = 'index.php?id_user=<?php echo $id_user; ?>';
                 </script>
         <?php
+=======
+              
+            } else {
+                
+                // header('location:' . SITEURL . 'src/manage-drug.php');
+                ?>
+                <script>
+                    window.location.href='index.php?id_user=<?php echo $id_user; ?>';
+                </script>
+                <?php
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
             }
         }
 
@@ -97,7 +109,11 @@
                         <input type="text" name="user_sdt" value="<?php echo $user_sdt; ?>">
                     </td>
                 </tr>
+<<<<<<< HEAD
 
+=======
+              
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
                 <tr>
                     <td colspan="2">
                         <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
@@ -120,14 +136,22 @@ if (isset($_POST['submit'])) {
     $user_name = $_POST['user_name'];
     $user_email = $_POST['user_email'];
     $picture = $_POST['picture'];
+<<<<<<< HEAD
     $status = $_POST['status'];
+=======
+    $status= $_POST['status'];
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
     $user_lv = $_POST['user_lv'];
 
 
     $id_lop = $_POST['id_lop'];
     $user_pass = $_POST['user_pass'];
     $user_sdt = $_POST['user_sdt'];
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
 
 
     //Create a SQL Query to Update Admin
@@ -147,6 +171,7 @@ if (isset($_POST['submit'])) {
     $res = mysqli_query($conn, $sql);
 
     if ($res == true) {
+<<<<<<< HEAD
 
         $_SESSION['update'] = "<div class='success'>Profile Updated Successfully.</div>";
 
@@ -170,3 +195,28 @@ if (isset($_POST['submit'])) {
 }
 
 ?>
+=======
+    
+        $_SESSION['update'] = "<div class='success'>Profile Updated Successfully.</div>";
+     
+        // header('location:' . SITEURL . 'src/manage-drug.php');
+        ?>
+        <script>
+            window.location.href='index.php?id_user=<?php echo $id_user; ?>';
+        </script>
+        <?php
+    } else {
+    
+        $_SESSION['update'] = "<div class='error'>Failed to Upadate Profile.</div>";
+     
+        // header('location:' . SITEURL . 'src/manage-drug.php');
+        ?>
+        <script>
+            window.location.href='user/index.php?id_user=<?php echo $id_user; ?>';
+        </script>
+        <?php
+    }
+}
+
+?>
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2

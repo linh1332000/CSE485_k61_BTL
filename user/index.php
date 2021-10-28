@@ -20,10 +20,15 @@
     <div class="container bootstrap snippets bootdeys">
         <div class="row" id="user-profile">
             <?php
+<<<<<<< HEAD
               
             if(!isset($_SESSION['loginOK'])){
                 header("Location:/index.php");
             }
+=======
+
+
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
             if (isset($_SESSION['no-user-found'])) {
                 echo $_SESSION['no-user-found'];
                 unset($_SESSION['no-user-found']);
@@ -133,6 +138,7 @@
                                     Room
                                 </div>
                                 <?php
+<<<<<<< HEAD
                                
                                 $sql2 = "SELECT * FROM zoom ";
 
@@ -140,13 +146,29 @@
                                 $res2 = mysqli_query($conn, $sql2);
 
                              
+=======
+                                //Create a SQL Query to Get all the Food
+                                $sql2 = "SELECT * FROM zoom ";
+
+                                //Execute the qUery
+                                $res2 = mysqli_query($conn, $sql2);
+
+                                //Count Rows to check whether we have foods or not
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
                                 $count = mysqli_num_rows($res2);
 
 
                                 if ($count > 0) {
+<<<<<<< HEAD
                                  
                                     while ($row = mysqli_fetch_assoc($res2)) {
                                      
+=======
+                                    //We have food in Database
+                                    //Get the Foods from Database and Display
+                                    while ($row = mysqli_fetch_assoc($res2)) {
+                                        //get the values from individual columns
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
                                         $id_zoom = $row['id_zoom'];
                                         $name_z = $row['name_z'];
                                         $id_user = $row['id_user'];
@@ -164,7 +186,11 @@
                                 <?php
                                     }
                                 } else {
+<<<<<<< HEAD
                                     
+=======
+                                    //Food not Added in Database
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
                                     echo "<tr> <td colspan='7' class='error'> Food not Added Yet. </td> </tr>";
                                 }
 
@@ -180,6 +206,7 @@
                                     </tr>
 
                                     <?php
+<<<<<<< HEAD
                                  
                                     $sql1 = "SELECT * FROM sukien ";
 
@@ -196,6 +223,25 @@
                                       
                                         while ($row = mysqli_fetch_assoc($res1)) {
                                          
+=======
+                                    //Create a SQL Query to Get all the Food
+                                    $sql1 = "SELECT * FROM sukien ";
+
+                                    //Execute the qUery
+                                    $res1 = mysqli_query($conn, $sql1);
+
+                                    //Count Rows to check whether we have foods or not
+                                    $count = mysqli_num_rows($res1);
+
+                                    //Create Serial Number VAriable and Set Default VAlue as 1
+                                    $sn = 1;
+
+                                    if ($count > 0) {
+                                        //We have food in Database
+                                        //Get the Foods from Database and Display
+                                        while ($row = mysqli_fetch_assoc($res1)) {
+                                            //get the values from individual columns
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
                                             $sk_id = $row['sk_id'];
                                             $sk_name = $row['sk_name'];
                                             $sk_date = $row['sk_date'];
@@ -206,7 +252,11 @@
                                                 <td><?php echo $sk_name; ?></td>
                                                 <td><?php echo $sk_date; ?></td>
                                                 <td>
+<<<<<<< HEAD
                                                     <a href="<?php echo SITEURL; ?>user/invite.php?sk_id=<?php echo $sk_id; ?>" class="btn btn-primary">Mời</a>
+=======
+                                                    <a href="<?php echo SITEURL; ?>admin/update-food.php?id=<?php echo $id; ?>" class="btn btn-primary">Mời</a>
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
 
                                                 </td>
                                             </tr>
@@ -214,7 +264,11 @@
                                     <?php
                                         }
                                     } else {
+<<<<<<< HEAD
                                       
+=======
+                                        //Food not Added in Database
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
                                         echo "<tr> <td colspan='7' class='error'> Food not Added Yet. </td> </tr>";
                                     }
 

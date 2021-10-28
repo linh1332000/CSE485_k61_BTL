@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
 <?php include('config/connect.php'); ?>
 <?php
         // Dịch vụ bảo vệ:
@@ -21,7 +24,11 @@
                 $id_user=$row['id_user'];
                 if ($row['user_lv']==1 or $row['user_lv']==0 ){
                     $_SESSION['id_user']=$row['id_user'];
+<<<<<<< HEAD
                     $_SESSION['loginOK'] = $username;
+=======
+                 
+>>>>>>> 699850d438d7afdc2a91158379b62c6d91af35f2
                     ?>
                     <script>
                         window.alert('Login Success, Welcome User!');
