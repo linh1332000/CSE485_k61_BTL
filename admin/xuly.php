@@ -25,7 +25,7 @@
                     ?>
                     <script>
                         window.alert('Login Success, Welcome Admin!');
-                        window.location.href='trangchu.php';
+                        window.location.href='./trangchu.php';
                     </script>
                     
                     <?php
