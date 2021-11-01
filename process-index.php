@@ -5,7 +5,7 @@
 <?php include('config/connect.php'); ?>
 <?php
         // Dịch vụ bảo vệ:
-      
+        session_start();
 
         if(isset($_POST['sbmGuiDi'])){
             $username = $_POST['txtEmail'];
