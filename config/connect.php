@@ -1,6 +1,6 @@
 <?php 
     //Start Session
-    session_start();
+   
 
 
     //Create Constants to Store Non Repeating Values
