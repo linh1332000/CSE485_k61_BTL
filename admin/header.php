@@ -10,3 +10,12 @@
     <title>Hello, world!</title>
   </head>
   <body>
+    <?php
+     if (!isset($_SESSION['id_user'])){
+       include 'formhelo.php';
+     }
+     else {
+      header("Location:index.php");
+     }
+    ?>
+
