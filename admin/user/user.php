@@ -1,4 +1,3 @@
-
 <?php include '../header.php';?>
 <style>
     .sidebar-container {
@@ -114,10 +113,15 @@
       </a>
     </li>
     <li>
-      <a href="../event/event.php">
+      <a href="./event/event.php">
         <i class="fa fa-info-circle" aria-hidden="true"></i> Event
       </a>
     </li>
+    <li>
+        <a href="./lop/lop.php">
+          <i class="fa fa-chalkboard	" aria-hidden="true"></i> Lớp
+        </a>
+      </li>
   </ul>
 </div>
 
@@ -132,7 +136,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Họ và tên</th>
                     <th scope="col">Email </th>
                     <th scope="col">Lớp</th>
