@@ -119,11 +119,16 @@
             </a>
         </li>
         <li>
-            <a href="../event/event.php">
-                <i class="fa fa-info-circle" aria-hidden="true"></i> Event
-            </a>
-        </li>
-    </ul>
+      <a href="./event/event.php">
+        <i class="fa fa-info-circle" aria-hidden="true"></i> Event
+      </a>
+    </li>
+    <li>
+        <a href="../lop/lop.php">
+          <i class="fa fa-chalkboard" aria-hidden="true"></i> Lớp
+        </a>
+      </li>
+  </ul>
 </div>
 
 <div class="content-container">
