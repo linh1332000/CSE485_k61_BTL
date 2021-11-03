@@ -121,7 +121,7 @@
       </a>
     </li>
     <li>
-      <a href="./event/event.php">
+      <a href="../event/event.php">
         <i class="fa fa-info-circle" aria-hidden="true"></i> Event
       </a>
     </li>

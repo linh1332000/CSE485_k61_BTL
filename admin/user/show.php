@@ -121,7 +121,7 @@
       </a>
     </li>
     <li>
-      <a href="./event/event.php">
+      <a href="../event/event.php">
         <i class="fa fa-info-circle" aria-hidden="true"></i> Event
       </a>
     </li>
@@ -148,7 +148,7 @@
                     <th scope="col">Ngày sinh</th>
                     <th scope="col">Số điện thoại</th>
                     <th scope="col">User_lv</th>
-                    <th scope="col">Trạng thái</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -165,7 +165,7 @@
                                 <td><?php echo $row['DOB']; ?></td>
                                 <td><?php echo $row['user_sdt']; ?></td>
                                 <td><?php echo $row['user_lv']; ?></td>
-                                <td><?php echo $row['status']; ?></td>
+                                
                             </tr>
                 <?php
                         }

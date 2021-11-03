@@ -17,29 +17,24 @@
 
           <ul class="nav col-12 col-lg-auto my-2 my-md-0 text-center">
             <li>
-              <a href="#" class="nav-link text-white " style =" padding-top:0">
+              <a href="../index.php" class="nav-link text-white " style =" padding-top:0">
                 <svg class="bi d-block mx-auto "   width="10" height="10"><use xlink:href="#home"></use></svg>
                 Home
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white" style =" padding-top:0">
+              <a href="event.php" class="nav-link text-white" style =" padding-top:0">
                 <svg class="bi d-block mx-auto " width="10" height="10"><use xlink:href="#speedometer2"></use></svg>
                 Event
               </a>
             </li>
-            <li>
-              <a href="#" class="nav-link text-white" style =" padding-top:0">
-                <svg class="bi d-block mx-auto " width="10" height="10"><use xlink:href="#table"></use></svg>
-                Profile
-              </a>
-            </li>
-            <li>
-              <a href="index.php" class="nav-link text-white" style =" padding-top:0">
+            
+            <!-- <li>
+              <a href="login.php" class="nav-link text-white" style =" padding-top:0">
                 <svg class="bi d-block mx-auto " width="10" height="10"><use xlink:href="#grid"></use></svg>
                 Login
               </a>
-            <li>
+            <li> -->
               <a href="logout.php" class="nav-link text-white" style =" padding-top:0">
                 <svg class="bi d-block mx-auto " width="10" height="10"><use xlink:href="#grid"></use></svg>
                 Logout

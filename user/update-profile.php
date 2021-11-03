@@ -1,30 +1,26 @@
 <?php include('../config/connect.php'); ?>
-
+<?php 
+    
+?>
 <!doctype html>
 <html lang="en">
-
+<?php include('header.php'); ?>
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
     <title>Hello, world!</title>
 </head>
 
 <div class="container bg-light text-dark">
     <div class="wrapper">
         <h2 class = " text-center"  style = "padding : 3%" ;>Update Profile</h2>
-        <img src="../images/back.jfif" input type="button" style = "margin-left : 10%; width: 5%;" onclick="history.back(-1)" alt="">
+        <img src="../images/back.png" input type="button" style = "margin-left : 10%; width: 5%;" onclick="history.back(-1)" alt="">
         <?php
         session_start();
         
         $id_user = $_GET['id_user'];
 
 
-        $sql = "SELECT * FROM user WHERE id_user=$id_user";
+        $sql = "SELECT user.*, lop.ten_lop, lien_khoa.ten_LienKhoa from ((user INNER JOIN lop on  user.id_lop = lop.id_Lop) INNER JOIN lien_khoa ON user.id_LienKhoa = lien_khoa.id_LienKhoa) where id_user = '$id_user'" ;
+
 
         $res = mysqli_query($conn, $sql);
 
@@ -39,11 +35,12 @@
                 $user_name = $row['user_name'];
                 $user_email = $row['user_email'];
                 $current_image = $row['picture'];
-                $status = $row['status'];
                 $user_lv = $row['user_lv'];
-                $id_lop = $row['id_lop'];
                 $user_pass = $row['user_pass'];
                 $user_sdt = $row['user_sdt'];
+                $ten_lop = $row['ten_lop'];
+                $ten_LienKhoa=$row['ten_LienKhoa'];
+                $DOB =$row['DOB'];
                 $_SESSION['loginOK'] = $user_email;
             } else {
 
@@ -64,8 +61,12 @@
                     <label for="inputEmail4" class="form-label">Name</label>
                     <input type="text" class="form-control" name="user_name" value="<?php echo $user_name; ?>">
                 </div>
+                <div class="col-6">
+                    <label for="inputAddress2" class="form-label">Ngày sinh</label>
+                    <input type="text" class="form-control" name="DOB" value="<?php echo $DOB; ?>">
+                </div>
                 <div class="col-md-6">
-
+            
                     <label for="inputEmail4" class="form-label">Email</label>
                     <input type="email" class="form-control" name="user_email" value="<?php echo $user_email; ?>">
                 </div>
@@ -75,8 +76,46 @@
                 </div>
                 <div class="col-6">
                     <label for="inputAddress2" class="form-label">Class</label>
-                    <input type="text" class="form-control" name="id_lop" value="<?php echo $id_lop; ?>">
+                    <select name="ten_Lop" id="ten_Lop">
+                        <!-- Lấy dữ liệu từ bảng Office -->
+                        <?php
+                        $sql = "SELECT * FROM lop";
+                        $result = mysqli_query($conn,$sql);
+
+                        
+                        if(mysqli_num_rows($result)){
+                            while($row=mysqli_fetch_assoc($result)){
+                                
+                                echo '<option value="'.$row['id_Lop'].'">'.$row['ten_Lop'].'</option>';
+                                
+                            }
+                        }
+                    ?>
+                    </select>
                 </div>
+                <div class="col-6">
+                    <label for="inputAddress2" class="form-label">Class</label>
+                    <select name="ten_LienKhoa" id="ten_LienKhoa">
+                        <!-- Lấy dữ liệu từ bảng Office -->
+                        <?php
+                        $sql = "SELECT * FROM lien_khoa";
+                        $result = mysqli_query($conn,$sql);
+
+                        
+                        if(mysqli_num_rows($result)){
+                            while($row=mysqli_fetch_assoc($result)){
+                                
+                                echo '<option value="'.$row['id_LienKhoa'].'">'.$row['ten_LienKhoa'].'</option>';
+                                
+                            }
+                        }
+                    ?>
+                    </select>
+                </div>
+                
+              
+                
+                
                 <div class="col-12">
                     <label for="inputCity" class="form-label">Password</label>
                     <input type="password" class="form-control" name="user_pass" value="<?php echo $user_pass; ?>">
@@ -106,7 +145,7 @@
                 <div class="col-12">
                     <input type="hidden" name="current_image" value="<?php echo $current_image; ?>"> 
                     <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
-                    <button type="submit" name="submit" value="Update Profile" class="btn btn-outline-success">Update</button>
+                    <button type="submit" name="submit" value="Update Profile" class="btn btn-outline-success" style = "border: 1px;">Update</button>
                 </div>
                 </table>
             </form>
@@ -122,11 +161,9 @@ if (isset($_POST['submit'])) {
     $user_name = $_POST['user_name'];
     $user_email = $_POST['user_email'];
     $picture = $_POST['picture'];
-    $status = $_POST['status'];
-    $user_lv = $_POST['user_lv'];
-
-
-    $id_lop = $_POST['id_lop'];
+    $DOB =$_POST['DOB'];
+    $ten_Lop = $_POST['ten_Lop'];
+    $ten_LienKhoa = $_POST['ten_LienKhoa'];
     $user_pass = $_POST['user_pass'];
     $user_sdt = $_POST['user_sdt'];
     if(isset($_FILES['picture']['name']))
@@ -204,15 +241,17 @@ if (isset($_POST['submit'])) {
         user_name='$user_name',
         user_email='$user_email',
         picture='$picture',
-        status='$status',
-        user_lv='$user_lv',
-        id_lop='$id_lop' ,
+        id_Lop= '$ten_Lop',
+        
         user_pass='$user_pass',
-        user_sdt='$user_sdt'
+        user_sdt='$user_sdt',
+        id_LienKhoa= '$ten_LienKhoa',
+        DOB = ' $DOB'
+        
         
         WHERE id_user='$id_user'
         ";
-
+        echo $sql;
     $res = mysqli_query($conn, $sql);
 
     if ($res == true) {
@@ -221,7 +260,7 @@ if (isset($_POST['submit'])) {
         
        
 
-        // header('location:' . SITEURL . 'src/manage-drug.php');
+        header('location:' . SITEURL . 'src/manage-drug.php');
 ?>
         <script>
             window.location.href = 'index.php?id_user=<?php echo $id_user; ?>';
@@ -231,13 +270,15 @@ if (isset($_POST['submit'])) {
 
         $_SESSION['update'] = "<div class='error'>Failed to Upadate Profile.</div>";
 
-        // header('location:' . SITEURL . 'src/manage-drug.php');
+        header('location:' . SITEURL . 'src/manage-drug.php');
     ?>
         <script>
-            window.location.href = 'user/index.php?id_user=<?php echo $id_user; ?>';
+            window.location.href = 'index.php?id_user=<?php echo $id_user; ?>';
         </script>
 <?php
     }
 }
 
 ?>
+
+<?php include('footer.php'); ?>

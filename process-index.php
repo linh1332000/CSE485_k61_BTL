@@ -1,10 +1,10 @@
 
 <?php include('config/connect.php'); ?>
-
 <?php
         // Dịch vụ bảo vệ:
+
         session_start();
-        
+
         if(isset($_POST['sbmGuiDi'])){
             $username = $_POST['txtEmail'];
             $password = $_POST['txtPass'];
@@ -20,8 +20,9 @@
                 // Bảo vệ cửa CHÍNH: kiểm tra xác thực
                 $row=mysqli_fetch_array($result);
                 $id_user=$row['id_user'];
-                $_SESSION['loginOK'] = $username;
                 if ($row['user_lv']==1 or $row['user_lv']==0 ){
+                    $_SESSION['id_user']=$row['id_user'];
+                    $_SESSION['loginOK'] = $username;
                     
                     ?>
                     <script>

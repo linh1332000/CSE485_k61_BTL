@@ -9,7 +9,7 @@
             unset( $_SESSION["user_name"]);
             unset( $_SESSION["id_lop"]);
             unset( $_SESSION["id_LienKhoa"]);
-            header("Location:http://localhost/2/admin/index.php");
+            header("Location:http://localhost/webbtl/admin/index.php");
     }
 }
 ?>

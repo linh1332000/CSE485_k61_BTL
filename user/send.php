@@ -7,6 +7,7 @@
     require '../phpmailer/PHPMailer.php';
     require '../phpmailer/SMTP.php';
     function sendEmail($recipient){
+
         // 1. Cài đặt môi trường sử dụng phpmailer
         // 2. Tạo ra đối tượng PHPMailer
         $mail = new PHPMailer(true); //Biến $mail đang là 1 object
@@ -38,7 +39,7 @@
             $mail->isHTML(true);   // Set email format to HTML
             $mail->Subject = '[localhost] Tham gia sự kiện';
             // Nội dung Email
-            $mail->Body = 'Nhấp vào đây để tham gia event: <a href="http://localhost/webbtl/?email='.$recipient.'">Nhấp vào đây</a>';
+            $mail->Body = 'Nhấp vào đây để tham gia event: <a href="http://localhost/webbtl/user/eventdes.php?email='.$recipient.'">Nhấp vào đây</a>';
             // Tệp tên đính kèm Email gửi đi
             
 
